@@ -1,8 +1,8 @@
-// Funções Iniciais
+// Starting Functions
 carregarListas()
 carregarTarefas()
 
-// ContextMenu Tarefas
+// ContextMenu Tasks
 function rightMenu_tarefa(id, event) {
     let div = document.getElementById('rightMenu_tarefa')
 
@@ -19,7 +19,7 @@ function rightMenu_tarefa(id, event) {
     }
 }
 
-// Alterar Cor da Tarefa
+// Change Task Color
 async function alterarCor(cor, tarefa_id) {
     let tarefas = await getStorage("tarefas")
     let index = tarefas.findIndex(function(e) { return e.id === +tarefa_id; });
@@ -33,7 +33,7 @@ async function alterarCor(cor, tarefa_id) {
     store("tarefas", tarefas)
 }
 
-// Terminar Tarefa
+// Mark Task as Complete
 async function terminarTarefa(tarefa_id) {
     if (document.getElementById('tarefa_' + tarefa_id).classList.contains('modoEditar')) {
         return
@@ -56,7 +56,7 @@ async function terminarTarefa(tarefa_id) {
     store("tarefas", tarefas)
 }
 
-// Remover Tarefa
+// Remove Task
 async function removerTarefa(tarefa_id) {
     let tarefas = await getStorage("tarefas")
 
@@ -69,7 +69,7 @@ async function removerTarefa(tarefa_id) {
     carregarTarefas()
 }
 
-// Editar Tarefa
+// Edit Task
 async function editarTarefa(tarefa_id) {
     let tarefas = await getStorage("tarefas");
     let index = tarefas.findIndex(function(e) { return e.id === +tarefa_id; });
@@ -109,7 +109,7 @@ async function editarTarefa(tarefa_id) {
     }
 }
 
-// Cancelar Alterações
+// Cancel Nem Name - Task
 function cancelarEditar_tarefa(tarefa_id) {
     let div_tarefa = document.getElementById('tarefa_' + tarefa_id)
     let p_tarefa = div_tarefa.querySelector(".texto_tarefa")
@@ -125,7 +125,7 @@ function cancelarEditar_tarefa(tarefa_id) {
     cor_tarefa.style.display = "block"
 }
 
-// Confirmar Alterações
+// Confirm New Name - Task
 async function confirmarEditar_tarefa(tarefa_id, index) {
     let novoNome = document.getElementById('input_tarefa_' + tarefa_id).value
     let tarefas = await getStorage("tarefas")
@@ -149,7 +149,7 @@ async function confirmarEditar_tarefa(tarefa_id, index) {
     cor_tarefa.style.display = "block"
 }
 
-// Criar Nova Tarefa
+// Add New Task
 async function criarTarefa(texto, cor) {
     let tarefasGuardadas = await getStorage("tarefas")
     const id = Math.floor(100000 + Math.random() * 900000)
@@ -166,7 +166,7 @@ async function criarTarefa(texto, cor) {
     carregarTarefas()
 }
 
-// Carregar Tarefas para a Lista Ativa
+// Load Tasks for the Current Active List
 async function carregarTarefas() {
     let tarefas = await getStorage("tarefas")
     let container = document.getElementById('tarefas_container')
@@ -208,7 +208,7 @@ async function carregarTarefas() {
     }
 }
 
-// Criar Nova Lista
+// Create New List
 async function criarLista(nome) {
     if (nome.split(' ').length > 5 || nome.length > 30) {
         document.getElementById('msgErro_listas').style.display = "block"
@@ -233,7 +233,7 @@ async function criarLista(nome) {
     }
 }
 
-// Editar Lista
+// Edit List
 async function editarLista(lista_id) {
     let listas = await getStorage("listas");
     let index = listas.findIndex(function(e) { return e.id === +lista_id; });
@@ -271,6 +271,7 @@ async function editarLista(lista_id) {
     }
 }
 
+// Cancel New Name - List
 function cancelarEditar(lista_id) {
     let div_lista = document.getElementById('lista_' + lista_id)
     let p_lista = div_lista.querySelector("p")
@@ -284,6 +285,7 @@ function cancelarEditar(lista_id) {
     p_lista.style.display = "block"
 }
 
+// Confirm New Name - List
 async function confirmarEditar(lista_id, index) {
     let novoNome = document.getElementById('input_lista_' + lista_id).value
     let listas = await getStorage("listas")
@@ -305,7 +307,7 @@ async function confirmarEditar(lista_id, index) {
     p_lista.style.display = "block"
 }
 
-// Remover Lista
+// Remove List
 async function removerLista(lista_id) {
     let listasGuardadas = await getStorage("listas")
 
@@ -318,7 +320,7 @@ async function removerLista(lista_id) {
     carregarListas()
 }
 
-// Carregar Listas
+// Load Lists
 async function carregarListas() {
     let listas = await getStorage("listas")
     let tarefas = await getStorage("tarefas")
@@ -345,24 +347,20 @@ async function carregarListas() {
         novaLista.setAttribute('id', 'lista_' + listas[i].id)
         novaLista.setAttribute('onclick', `ativarLista(${listas[i].id})`)
         novaLista.setAttribute('oncontextmenu', `event.preventDefault(), rightMenu_lista(${listas[i].id}, event)`)
-        // Class de ativa
         if (listas[i].ativa === true) {
             novaLista.classList.add('ativa')
             display_listaAtiva.innerText = listas[i].nome
             store("listaAtiva", listas[i].id)
         }
-
         let p = document.createElement('p')
         p.innerText = `${listas[i].nome} (${tarefas_lista})`
-
         novaLista.appendChild(p)
         container.appendChild(novaLista)
     }
-    // Mostrar Numero de Listas
     numero_listas.innerText = listas.length
 }
 
-// Ativar Lista a Mostrar
+// Activate List
 async function ativarLista(lista_id) {
     if (document.getElementById('lista_' + lista_id).classList.contains('modoEditar')) {
         return
@@ -394,7 +392,7 @@ async function ativarLista(lista_id) {
     modal("lista_manager")
 }
 
-// Abrir e Fechar Modals
+// Open / Close Modals
 async function modal(modal_id) {
     let modal = document.getElementById('modal_' + modal_id)
     let modalTarefas = document.getElementById('tarefas_display')
@@ -408,7 +406,7 @@ async function modal(modal_id) {
     }
 }
 
-// ContextMenu Listas
+// ContextMenu Lists
 function rightMenu_lista(id, event) {
     let div = document.getElementById('rightMenu_lista')
 
@@ -425,7 +423,7 @@ function rightMenu_lista(id, event) {
     }
 }
 
-// Fechar ContextMenu
+// Close ContextMenus
 document.onclick = hideMenu
 
 function hideMenu() {
@@ -436,7 +434,7 @@ function hideMenu() {
     });
 }
 
-// Manusear Storage
+// Manage Local Storage - GET
 function getStorage(storage_id) {
     try {
         const storageResults = localStorage.getItem(storage_id)
@@ -448,6 +446,7 @@ function getStorage(storage_id) {
     }
 }
 
+// Manage Local Storage - STORE
 function store(storage_id, storeItems) {
     try {
         const storeString = JSON.stringify(storeItems)
@@ -458,27 +457,28 @@ function store(storage_id, storeItems) {
     }
 }
 
-// Criar Lista com o enter no input
-let input = document.getElementById('input_criarLista') // Certifica-te que este ID está correto no teu HTML
+// Create List with Enter Key
+let input = document.getElementById('input_criarLista')
 input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        let nome = input.value.trim() // Remover espaços em branco
-        if (nome) { // Apenas cria a lista se o nome não for vazio
+        let nome = input.value.trim()
+        if (nome) {
             criarLista(nome)
-            input.value = '' // Limpar o campo de entrada
+            input.value = ''
         }
     }
 })
 
-let input2 = document.getElementById('texto_criarTarefa') // Certifica-te que este ID está correto no teu HTML
+// Create Task with Enter Key
+let input2 = document.getElementById('texto_criarTarefa')
 input2.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         let nome = input2.value.trim()
         let cor = document.getElementById('cor_criarTarefa').value
         console.log(cor)
-        if (nome) { // Apenas cria a lista se o nome não for vazio
+        if (nome) {
             criarTarefa(nome, cor)
-            input2.value = '' // Limpar o campo de entrada
+            input2.value = ''
         }
     }
 })

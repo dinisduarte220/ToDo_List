@@ -10,8 +10,6 @@
 </head>
 <body>
 
-    <!-- Tarefas -->
-
     <div id="tarefas_display">
         <div id="novaTarefa">
             <input id="cor_criarTarefa" type="color" value="#D6D6D6">
@@ -22,15 +20,6 @@
             <div class="tarefa">
                 <input class="cor_tarefa" on type="color" value="#D6D6D6">
                 <div class="texto_tarefa">Isto é uma tarefa</div>
-                <!-- <div id="selectMenu_tarefa">
-                    <span id="selectOptionDisplay_tarefa"><i class="fa-regular fa-clock"></i> Pendente</span>
-                    <ul id="selectOptions_tarefa">
-                        <li><i class="fa-regular fa-clock"></i> Pendente</li>
-                        <li><i class="fa-regular fa-hourglass-half"></i> Em Progresso</li>
-                        <li><i class="fa-regular fa-thumbs-up"></i> Concluido</li>
-                        <li><i class="fa-solid fa-pencil"></i> Customizado</li>
-                    </ul>
-                </div> -->
             </div>
         </div>
     </div>
@@ -41,8 +30,6 @@
             <li onclick="removerTarefa(document.getElementById('rightMenu_tarefa').getAttribute('data-id'))"><i class="fa-solid fa-trash-can"></i> Eliminar</li>
         </ul>
     </div>
-
-    <!-- Listas -->
     <div id="lista_manager" onclick="modal('lista_manager')">
         <i class="fa-solid fa-bars-staggered"></i>
         <span id="nomeLista_display">Nome da Lista</span>
@@ -60,9 +47,6 @@
         <h2>Gerir Listas (<span id="num_listas"></span>)</h2>
         <br>
         <div id="listasContainer">
-            <!-- <div class="lista ativa">
-                <p>Nome da Lista</p>
-            </div> -->
         </div>
         <br>
         <div id="novaLista">
@@ -75,39 +59,3 @@
     <script src='script.js'></script>
 </body>
 </html>
-
-<!-- 
-
-Objetivos:
-
-- Gerir Listas: 🟢
-    - Adicionar Lista --------------------------- 🟢 [CONCLUIDO]
-    - Remover Lista ----------------------------- 🟢 [CONCLUIDO]
-    - Editar Lista ------------------------------ 🟢 [CONCLUIDO]
-    
-- Listas: 🟢
-    - Adicionar Items --------------------------- 🟢 [CONCLUIDO]
-    - Remover Items ----------------------------- 🟢 [CONCLUIDO]
-    - Editar Items ------------------------------ 🟢 [CONCLUIDO]
-    - Marcar Items ------------------------------ 🟢 [CONCLUIDO]
-        
-- Adições Futuras:
-    Listas:
-        - Ocultar Listas
-        - Bloquear Listas com código de Acesso
-    Tarefas:
-        - Adicionar Estado:
-            - Pendente
-            - Em Progresso
-            - Acabado
-            - Customizado
-        - Progresso
-
-VERSÃO 1.0
-
-🟢 - Acabado
-🟡 - Em Debugging
-🟠 - Em Desenvolvimento
-🔴 - Por Começar
-
--->

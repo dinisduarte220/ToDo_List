@@ -1,5 +1,5 @@
 :root {
-  /* Fundo */
+  /* Background */
   --cor-fundo: rgb(50, 50, 50);
 
   /* Buttons */
@@ -33,8 +33,7 @@ body {
   background-color: var(--cor-fundo);
 }
 
-/* Tarefas */
-
+/* Tasks */
 #tarefas_display {
   position: absolute;
   top: 50%;
@@ -113,7 +112,6 @@ input[type="color"]::-webkit-color-swatch {
   top: 1rem;
   left: 50%;
   transform: translate(-50%, 0);
-  /* background-color: red; */
   border-radius: 10px;
   width: 95%;
   height: calc(100% - 7rem);
@@ -157,7 +155,6 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 #tarefas_container .tarefa .texto_tarefa {
-  /* width: calc(100% - 10rem - 25px - 5px); */
   width: calc(100% - 25px - 5px);
   text-align: left;
   margin-left: 5px;
@@ -184,8 +181,7 @@ input[type="color"]::-webkit-color-swatch {
   opacity: .5;
 }
 
-/* Manager - Listas */
-
+/* Lists */
 #lista_manager {
   position: absolute;
   bottom: 15px;
@@ -320,7 +316,6 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 /* Modals */
-
 .modal {
   position: fixed;
   top: 50%;
@@ -343,7 +338,6 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 /* Right Menus */
-
 #rightMenu_lista, #rightMenu_tarefa {
   display: none;
 }
@@ -379,7 +373,6 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 /* ScrollBar */
-
 ::-webkit-scrollbar {
   display: none;
 }
