@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='style.css'>
+    <script src='https://unpkg.com/boxicons@2.1.4/dist/boxicons.js'></script>
+    <script src='https://kit.fontawesome.com/207c253573.js' crossorigin='anonymous'></script>
+    <title>To Do List</title>
+</head>
+<body>
+
+    <!-- Tarefas -->
+
+    <div id="tarefas_display">
+        <div id="novaTarefa">
+            <input id="cor_criarTarefa" type="color" value="#D6D6D6">
+            <input id="texto_criarTarefa" type="text" placeholder="Nova Tarefa">
+            <button id="button_criarTarefa" onclick="criarTarefa(document.getElementById('texto_criarTarefa').value, document.getElementById('cor_criarTarefa').value); document.getElementById('texto_criarTarefa').value = ''"><i class="fa-regular fa-plus"></i></button>
+        </div>
+        <div id="tarefas_container">
+            <div class="tarefa">
+                <input class="cor_tarefa" on type="color" value="#D6D6D6">
+                <div class="texto_tarefa">Isto é uma tarefa</div>
+                <!-- <div id="selectMenu_tarefa">
+                    <span id="selectOptionDisplay_tarefa"><i class="fa-regular fa-clock"></i> Pendente</span>
+                    <ul id="selectOptions_tarefa">
+                        <li><i class="fa-regular fa-clock"></i> Pendente</li>
+                        <li><i class="fa-regular fa-hourglass-half"></i> Em Progresso</li>
+                        <li><i class="fa-regular fa-thumbs-up"></i> Concluido</li>
+                        <li><i class="fa-solid fa-pencil"></i> Customizado</li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="rightMenu_tarefa" class="rightMenu">
+        <ul>
+            <li onclick="editarTarefa(document.getElementById('rightMenu_tarefa').getAttribute('data-id'))"><i class="fa-solid fa-pencil"></i> Editar</li>
+            <li onclick="removerTarefa(document.getElementById('rightMenu_tarefa').getAttribute('data-id'))"><i class="fa-solid fa-trash-can"></i> Eliminar</li>
+        </ul>
+    </div>
+
+    <!-- Listas -->
+    <div id="lista_manager" onclick="modal('lista_manager')">
+        <i class="fa-solid fa-bars-staggered"></i>
+        <span id="nomeLista_display">Nome da Lista</span>
+    </div>
+
+    <div id="rightMenu_lista" class="rightMenu">
+        <ul>
+            <li onclick="editarLista(document.getElementById('rightMenu_lista').getAttribute('data-id'))"><i class="fa-solid fa-pencil"></i> Editar</li>
+            <li onclick="removerLista(document.getElementById('rightMenu_lista').getAttribute('data-id'))"><i class="fa-solid fa-trash-can"></i> Eliminar</li>
+        </ul>
+    </div>
+
+    <div class="modal" id="modal_lista_manager">
+        <i onclick="modal('lista_manager')" id="close_modal" class="fa-solid fa-xmark"></i>
+        <h2>Gerir Listas (<span id="num_listas"></span>)</h2>
+        <br>
+        <div id="listasContainer">
+            <!-- <div class="lista ativa">
+                <p>Nome da Lista</p>
+            </div> -->
+        </div>
+        <br>
+        <div id="novaLista">
+            <input id="input_criarLista" type="text" placeholder="Nova Lista">
+            <button id="button_criarLista" onclick="criarLista(document.getElementById('input_criarLista').value); document.getElementById('input_criarLista').value = ''"><i class="fa-regular fa-plus"></i></button>
+        </div>
+        <p id="msgErro_listas">Mensagem de erro</p>
+    </div>
+    
+    <script src='script.js'></script>
+</body>
+</html>
+
+<!-- 
+
+Objetivos:
+
+- Gerir Listas: 🟢
+    - Adicionar Lista --------------------------- 🟢 [CONCLUIDO]
+    - Remover Lista ----------------------------- 🟢 [CONCLUIDO]
+    - Editar Lista ------------------------------ 🟢 [CONCLUIDO]
+    
+- Listas: 🟢
+    - Adicionar Items --------------------------- 🟢 [CONCLUIDO]
+    - Remover Items ----------------------------- 🟢 [CONCLUIDO]
+    - Editar Items ------------------------------ 🟢 [CONCLUIDO]
+    - Marcar Items ------------------------------ 🟢 [CONCLUIDO]
+        
+- Adições Futuras:
+    Listas:
+        - Ocultar Listas
+        - Bloquear Listas com código de Acesso
+    Tarefas:
+        - Adicionar Estado:
+            - Pendente
+            - Em Progresso
+            - Acabado
+            - Customizado
+        - Progresso
+
+VERSÃO 1.0
+
+🟢 - Acabado
+🟡 - Em Debugging
+🟠 - Em Desenvolvimento
+🔴 - Por Começar
+
+-->
